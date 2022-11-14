@@ -1,0 +1,46 @@
+{% extends "app/base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+    <h5>Customer Details</h5>
+    Name: {{ object.name }} <br>
+    Acquired Date: {{ object.acquired_date }} <br>
+
+
+    <br>
+    <h5>Jobs:</h5>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Job ID</th>
+            <th>Last Updated</th>
+            <th>Scope of Work</th>
+            <th>P/O</th>
+            <th>Requester</th>
+            <th>SC W/O#</th>
+            <th>Site</th>
+            <th>Status</th>
+            <th>Notes</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for jobs in customer.job_set.all %}
+            <tr>
+
+                <td>{{ jobs.id }}</td>
+                <td>{{ jobs.updated }}</td>
+                <td>{{ jobs.scope_of_work }}</td>
+                <td>{{ jobs.PO_number }}</td>
+                <td>{{ jobs.request_from }}</td>
+                <td>{{ jobs.SC_work_order }}</td>
+                <td>{{ jobs.customer_location.site_abbreviation }}</td>
+                <td>{{ jobs.status }}</td>
+                <td>{{ jobs.notes }}</td>
+
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock content %}
