@@ -1,34 +1,8 @@
 {% extends "app/base.html" %}
 {% load static %}
-{% load system_tags %}
 
 
 
 {% block content %}
-    <h3>User: {{ request.user }}</h3>
-    {% if request.user|has_group:'worker' %}
-        <h5>Pending Jobs Assigned to you:</h5>
-        <table class="table table-bordered">
-            <thead>
-            <tr>
-                <td>Customer</td>
-                <td>Customer/Job Location</td>
-                <td>Job Status</td>
-                <td>Job Details</td>
-            </tr>
-            </thead>
-            <tbody>
-            {% for workers in object_list %}
-                {% if workers.worker == request.user and workers.job.status_id is 1%}
-                    <tr>
-                        <td>{{ workers.job.customer }}</td>
-                        <td>{{ workers.job.customer_location.address }}</td>
-                        <td>{{ workers.job.status.status }}</td>
-                        <td><a href="{% url 'job_detail' workers.job.pk %}">Details</a></td>
-                    </tr>
-                {% endif %}
-            {% endfor %}
-            </tbody>
-        </table>
-    {% endif %}
+
 {% endblock content %}

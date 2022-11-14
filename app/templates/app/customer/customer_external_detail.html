@@ -7,8 +7,6 @@
     <h5>Customer Details</h5>
     Name: {{ object.name }} <br>
     Acquired Date: {{ object.acquired_date }} <br>
-    Active Customer?: {{ object.active|yesno }} <br>
-    External Customer Link: {% url 'customerexternaldetails' object.external_uuid %} <br>
 
 
     <br>
@@ -45,5 +43,4 @@
         {% endfor %}
         </tbody>
     </table>
-
 {% endblock content %}

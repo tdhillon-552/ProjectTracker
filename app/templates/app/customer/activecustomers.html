@@ -1,0 +1,33 @@
+{% extends "app/base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+<h5>Active Customer List</h5>
+    <table class="table table-bordered">
+    <thead>
+    <tr>
+        <td>Customer ID</td>
+        <td>Name</td>
+        <td>Created Date</td>
+        <td>Acquired Date</td>
+        <td>Active?</td>
+        <td>Details</td>
+    </tr>
+    </thead>
+    <tbody>
+    {% for customer in object_list %}
+        <tr>
+        <td>{{ customer.id }}</td>
+        <td>{{ customer.name }}</td>
+        <td>{{ customer.created }}</td>
+        <td>{{ customer.acquired_date }}</td>
+        <td>{{ customer.active|yesno }}</td>
+        <td><a href="{% url 'customerdetails' customer.slug %}" class="btn btn-secondary">Details</a></td>
+        </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+
+{% endblock content %}

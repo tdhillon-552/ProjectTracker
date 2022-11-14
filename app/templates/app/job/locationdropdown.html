@@ -1,0 +1,6 @@
+
+
+<option value="">---------</option>
+{% for loc in locations %}
+<option value="{{ loc.pk }}">{{ loc.address }}</option>
+{% endfor %}
