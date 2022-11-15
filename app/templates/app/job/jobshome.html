@@ -9,6 +9,18 @@
         <div class="row">
             <div class="col-sm">
                 <figure class="text-center">
+                    <a href="{% url 'addjob' %}">
+                        <img src="{% static 'app/images/createjob.png' %}"
+                             alt="customers"
+                             width="150"
+                             height="150"
+                        >
+                    </a>
+                    <figcaption>Create Job</figcaption>
+                </figure>
+            </div>
+            <div class="col-sm">
+                <figure class="text-center">
                     <a href="{% url 'customerhome' %}">
                         <img src="{% static 'app/images/customers_icon.png' %}"
                              alt="customers"
@@ -17,18 +29,6 @@
                         >
                     </a>
                     <figcaption>Customers</figcaption>
-                </figure>
-            </div>
-            <div class="col-sm">
-                <figure class="text-center">
-                    <a href="{% url 'jobshome' %}">
-                        <img src="{% static 'app/images/jobs.png' %}"
-                             alt="customers"
-                             width="150"
-                             height="150"
-                        >
-                    </a>
-                    <figcaption>Jobs</figcaption>
                 </figure>
             </div>
             <div class="col-sm">

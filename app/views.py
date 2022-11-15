@@ -12,6 +12,14 @@ class HomeView(TemplateView):
     template_name = 'app/home.html'
 
 
+class CustomerHome(TemplateView):
+    template_name = 'app/customer/customerhome.html'
+
+
+class JobsHome(TemplateView):
+    template_name = 'app/job/jobshome.html'
+
+
 def load_locations(request):
     customer_id = request.GET.get('locations')
     locations = CustomerLocation.objects.filter(customer_id=customer_id).order_by('address')
@@ -83,10 +91,10 @@ class CustomerExternalDetailsPrint(DetailView):
         return Customer.objects.get(external_uuid=self.kwargs.get('external_uuid'))
 
 
-# class TrainingPrintPDF(WeasyTemplateResponseMixin, CustomerExternalDetailsPrint):
-#     response_class = WeasyTemplateResponse
-#     pdf_attachment = False
-#     pdf_filename = 'printout.pdf'
-#     pdf_stylesheets = [
-#         str(settings.STATIC_ROOT) + '/css/bootstrap.css',
-#     ]
+class CustomerExternalDetailsPrintPDF(WeasyTemplateResponseMixin, CustomerExternalDetailsPrint):
+    response_class = WeasyTemplateResponse
+    pdf_attachment = False
+    pdf_filename = 'printout.pdf'
+    pdf_stylesheets = [
+        str(settings.STATIC_ROOT) + '\\app\\bootstrap.css',
+    ]

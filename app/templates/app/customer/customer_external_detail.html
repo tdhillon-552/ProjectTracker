@@ -8,7 +8,8 @@
     Name: {{ object.name }} <br>
     Acquired Date: {{ object.acquired_date }} <br>
 
-
+<a href="{% url 'customerexternaldetailsprint' object.external_uuid %}" class="btn btn-primary" role="button"
+       aria-pressed="true">Print</a>
     <br>
     <h5>Jobs:</h5>
     <table class="table table-bordered">

@@ -4,31 +4,30 @@
 
 
 {% block content %}
-
     <div class="container">
         <div class="row">
             <div class="col-sm">
                 <figure class="text-center">
-                    <a href="{% url 'customerhome' %}">
-                        <img src="{% static 'app/images/customers_icon.png' %}"
+                    <a href="{% url 'addcustomer' %}">
+                        <img src="{% static 'app/images/addcustomericon.png' %}"
                              alt="customers"
                              width="150"
                              height="150"
                         >
                     </a>
-                    <figcaption>Customers</figcaption>
+                    <figcaption>Create Customer</figcaption>
                 </figure>
             </div>
             <div class="col-sm">
-                <figure class="text-center">
-                    <a href="{% url 'jobshome' %}">
-                        <img src="{% static 'app/images/jobs.png' %}"
+                                <figure class="text-center">
+                    <a href="{% url 'activecustomers' %}">
+                        <img src="{% static 'app/images/activeusers.png' %}"
                              alt="customers"
                              width="150"
                              height="150"
                         >
                     </a>
-                    <figcaption>Jobs</figcaption>
+                    <figcaption>Active Customer</figcaption>
                 </figure>
             </div>
             <div class="col-sm">
