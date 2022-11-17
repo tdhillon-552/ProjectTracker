@@ -1,0 +1,57 @@
+{% extends "app/base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+    <h5>Search Job</h5>
+    <form method="post"> {% csrf_token %}
+
+        <div class="form-row">
+            <div class="form-group col-md-2 mb-0">
+                {{ status_search.status|as_crispy_field }}
+            </div>
+            <div class="form-group col-md-2 mb-0">
+                <input type="submit" value="Submit" class="btn btn-primary"/>
+                <a href="#" class="btn btn-primary" role="button" aria-pressed="true">Save/Print
+                    PDF</a>
+            </div>
+        </div>
+    </form>
+    <br>
+    <br>
+
+     <table class="table table-bordered">
+
+    <thead>
+    <tr>
+        <td>Job ID</td>
+        <td>Last Updated</td>
+        <td>Scope of Work</td>
+        <td>P/O</td>
+        <td>Requester</td>
+        <td>SC W/O#</td>
+        <td>Site</td>
+        <td>Status</td>
+        <td>Customer</td>
+    </tr>
+    </thead>
+    <tbody>
+        {% for info in search_results %}
+            <tr>
+            <td>{{ info.id }}</td>
+            <td>{{ info.updated }}</td>
+            <td>{{ info.scope_of_work }}</td>
+            <td>{{ info.PO_number }}</td>
+            <td>{{ info.request_from }}</td>
+            <td>{{ info.SC_work_order }}</td>
+            <td>{{ info.customer_location.site_abbreviation }}</td>
+            <td>{{ info.status }}</td>
+            <td>{{ info.customer }}</td>
+            </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+
+
+{% endblock %}

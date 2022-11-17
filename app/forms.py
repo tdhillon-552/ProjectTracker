@@ -1,6 +1,8 @@
+import datetime
+
 from django import forms
 
-from app.models import Customer, Job, CustomerLocation
+from app.models import Customer, Job, CustomerLocation, JobStatus
 
 
 class DateInput(forms.DateInput):
@@ -33,3 +35,7 @@ class CreateJobForm(forms.ModelForm):
                 pass  # invalid input from the client; ignore and fallback to empty Loc queryset
         elif self.instance.pk:
             self.fields['customer_location'].queryset = self.instance.customer.customerlocation_set_set.order_by('address')
+
+
+class SearchForm(forms.Form):
+    status = forms.ModelChoiceField(queryset=JobStatus.objects.all())
